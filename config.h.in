@@ -1,0 +1,6 @@
+
+// the configured options and settings
+
+#define QTEMPLATE_VERSION_MAJOR @QTemplate_VERSION_MAJOR@
+#define QTEMPLATE_VERSION_MINOR @QTemplate_VERSION_MINOR@
+#define QTEMPLATE_VERSION_PATCH @QTemplate_VERSION_PATCH@

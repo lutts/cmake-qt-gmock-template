@@ -1,0 +1,18 @@
+
+// Verzeichnis
+#define SQLTESTFILE "@SQLTESTFILE@"
+#define DATABASE "@DATABASE@"
+#define DATABASEDRIVER "@DATABASEDRIVER@"
+
+// The following line GTEST_FLAG causes Google Mock to throw an exception on failure,
+// which will be interpreted by your testing framework as a test failure.
+
+#define QTEST_GMOCK_MAIN(TestObject) \
+int main(int argc, char *argv[]) \
+{ \
+    ::testing::GTEST_FLAG(throw_on_failure) = true; \
+    ::testing::InitGoogleMock(&argc, argv); \
+    QCoreApplication app(argc, argv); \
+    TestObject tc; \
+    return QTest::qExec(&tc, argc, argv); \
+}

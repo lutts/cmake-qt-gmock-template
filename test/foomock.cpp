@@ -1,0 +1,2 @@
+#include "foomock.h"
+
