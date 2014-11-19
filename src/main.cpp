@@ -1,11 +1,12 @@
 
 #include "foo.h"
 #include "config.h"
+#include <QDebug>
 
 int main(int argc, char *argv[])
 {
     Foo foo;
-    foo.bar();
+    qDebug() << foo.bar();
 
     return 0;
 }

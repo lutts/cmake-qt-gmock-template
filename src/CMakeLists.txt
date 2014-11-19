@@ -19,17 +19,13 @@ configure_file (
   "${CMAKE_CURRENT_BINARY_DIR}/config.h"
   )
 
-qt4_wrap_cpp(MOC_OUTFILES ${QT_MOC_HEADERS})
+qt5_wrap_cpp(MOC_OUTFILES ${QT_MOC_HEADERS})
 
 # Die ui_xxxx.h files werden im CMAKE_CURRENT_BINARY_DIR erzeugt.
-qt4_wrap_ui(UI_OUTFILES ${QT_UI})
-
-include(${QT_USE_FILE})
+qt5_wrap_ui(UI_OUTFILES ${QT_UI})
 
 add_library(fooLib STATIC ${QT_SRCS} ${UI_OUTFILES} ${MOC_OUTFILES})
+target_link_libraries(fooLib Qt5::Widgets)
 
 add_executable(foo main.cpp)
-target_link_libraries(foo fooLib ${QT_LIBRARIES})
-
-add_assembler_output(libfooLib.a)
-#add_assembler_output(foo.exe)
+target_link_libraries(foo fooLib Qt5::Widgets)

@@ -1,26 +1,29 @@
 project(CMakeGMockTemplate)
-cmake_minimum_required(VERSION 2.8)
+cmake_minimum_required(VERSION 2.8.11)
 
-include(QtBuildUtil)
+enable_testing(true)
+
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/Modules)
+
+# activate C++ 11
+add_definitions(-std=c++11)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 # The version number.
 set (QTemplate_VERSION_MAJOR 0)
 set (QTemplate_VERSION_MINOR 1)
 set (QTemplate_VERSION_PATCH 0)
 
-find_package(Qt4 4.7.2 COMPONENTS QtCore REQUIRED)
-
+# Find includes in corresponding build directories
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
+# Instruct CMake to run moc automatically when needed.
+set(CMAKE_AUTOMOC ON)
 
+# Widgets finds its own dependencies (QtGui and QtCore).
+find_package(Qt5Widgets REQUIRED)
 
-include(${QT_USE_FILE})
-
-find_doxygen()
+# find_doxygen()
 
 add_subdirectory(src)
-
-# The following are required to uses Dart and the Cdash dashboard
-enable_testing(true)
-#include(CTest)
-
 add_subdirectory(test)
+add_subdirectory(ToDoCore)
