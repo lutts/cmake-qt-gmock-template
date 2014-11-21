@@ -1,30 +1,34 @@
+// Copyright (c) 2014
+// All rights reserved.
+//
+// Author: Lutts Cao <<lutts.cao@gmail.com>>
+//
+// [Desc]
+
 #include <QtTest/QtTest>
 
-class TestQString: public QObject
-{
-    Q_OBJECT
+class TestQString: public QObject {
+  Q_OBJECT
 
-private slots:
-    void toUpper_data();
-    void toUpper();
+ private slots:
+  void toUpper_data();
+  void toUpper();
 };
 
-void TestQString::toUpper_data()
-{
-    QTest::addColumn<QString>("string");
-    QTest::addColumn<QString>("result");
+void TestQString::toUpper_data() {
+  QTest::addColumn<QString>("str");
+  QTest::addColumn<QString>("result");
 
-    QTest::newRow("all lower") << "hello" << "HELLO";
-    QTest::newRow("mixed")     << "Hello" << "HELLO";
-    QTest::newRow("all upper") << "HELLO" << "HELLO";
+  QTest::newRow("all lower") << "hello" << "HELLO";
+  QTest::newRow("mixed")     << "Hello" << "HELLO";
+  QTest::newRow("all upper") << "HELLO" << "HELLO";
 }
 
-void TestQString::toUpper()
-{
-    QFETCH(QString, string);
-    QFETCH(QString, result);
+void TestQString::toUpper() {
+  QFETCH(QString, str);
+  QFETCH(QString, result);
 
-    QCOMPARE(string.toUpper(), result);
+  QCOMPARE(str.toUpper(), result);
 }
 
 QTEST_MAIN(TestQString)

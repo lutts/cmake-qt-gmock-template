@@ -11,7 +11,6 @@ configure_file (
 
 
 include_directories(
-    ../src
     ${CMAKE_CURRENT_BINARY_DIR}/../src
 )
 

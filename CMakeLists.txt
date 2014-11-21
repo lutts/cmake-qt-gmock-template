@@ -5,6 +5,8 @@ enable_testing(true)
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake/Modules)
 
+include(CommonUtils)
+
 # activate C++ 11
 add_definitions(-std=c++11)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
@@ -26,5 +28,7 @@ find_package(Qt5Widgets REQUIRED)
 
 add_subdirectory(src)
 add_subdirectory(test)
-add_subdirectory(ToDoCore)
+add_subdirectory(gtest)
 add_subdirectory(qtest)
+
+ADD_CPPLINT_SUPPORT("")

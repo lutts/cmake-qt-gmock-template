@@ -1,14 +1,21 @@
-#ifndef FOOMOCK_H
-#define FOOMOCK_H
+// Copyright (c) 2014
+// All rights reserved.
+//
+// Author: Lutts Cao <<lutts.cao@gmail.com>>
+//
+// [Desc]
 
-#include "gmock/gmock.h"
-#include "foo.h"
+#ifndef TEST_FOOMOCK_H_
+#define TEST_FOOMOCK_H_
+
 #include <QString>
 
-class FooMock : public Foo
-{
-public:
-    MOCK_METHOD0(bar, QString());
+#include "src/foo.h"
+#include "gmock/gmock.h"
+
+class FooMock : public Foo {
+ public:
+  MOCK_METHOD0(bar, QString());
 };
 
-#endif // FOOMOCK_H
+#endif  // TEST_FOOMOCK_H_

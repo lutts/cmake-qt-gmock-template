@@ -1,12 +1,18 @@
+// Copyright (c) 2014
+// All rights reserved.
+//
+// Author: Lutts Cao <<lutts.cao@gmail.com>>
+//
+// [Desc]
 
-#include "foo.h"
-#include "config.h"
 #include <QDebug>
 
-int main(int argc, char *argv[])
-{
-    Foo foo;
-    qDebug() << foo.bar();
+#include "src/foo.h"
+#include "config.h"  // auto-generated header file, NOLINT
 
-    return 0;
+int main(int argc, char *argv[]) {
+  Foo foo;
+  qDebug() << foo.bar();
+
+  return 0;
 }

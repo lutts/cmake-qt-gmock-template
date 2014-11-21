@@ -3,7 +3,6 @@ include(xTestUtil)
 INIT_QGTEST()
 
 include_directories(
-    ../src
     ${CMAKE_CURRENT_BINARY_DIR}/../src
 )
 
