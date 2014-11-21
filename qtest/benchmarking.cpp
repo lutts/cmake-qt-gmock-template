@@ -84,4 +84,4 @@ void TestBenchmark::series() {
 }
 
 QTEST_MAIN(TestBenchmark)
-#include "benchmarking.moc"
+#include "moc_benchmarking.cpp"

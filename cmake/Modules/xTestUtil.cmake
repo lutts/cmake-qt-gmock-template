@@ -35,10 +35,7 @@ function(add_qg_test testname)
   # message("QGTEST_MOCS = ${QGTEST_MOCS}")
   # message("QGTEST_SRCS = ${QGTEST_SRCS}")
   # message("QGTEST_LIBS = ${QGTEST_LIBS}")
-  
-  SET(AUTOMOCK_BACKUP ${AUTOMOCK})
-  SET(AUTOMOCK OFF PARENT)
-  
+
   qt5_wrap_cpp(test_${testname}_MOC ${QGTEST_MOCS})
   
   add_custom_target(moc_${testname}_target DEPENDS ${test_${testname}_MOC})
@@ -61,8 +58,6 @@ function(add_qg_test testname)
       WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
       COMMENT "Running ${target}" VERBATIM)
   endif(${QGTEST_AUTORUN})
-
-  SET(AUTOMOC ${AUTOMOCK_BACKUP} PARENT)
 endfunction(add_qg_test)
 
 function(add_gmock_test target)

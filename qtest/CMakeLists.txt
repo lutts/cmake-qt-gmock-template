@@ -2,6 +2,8 @@ include(xTestUtil)
 
 INIT_QGTEST()
 
+SET(CMAKE_AUTOMOC OFF)
+
 include_directories(
     ${CMAKE_CURRENT_BINARY_DIR}/../src
 )

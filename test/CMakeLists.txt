@@ -2,6 +2,8 @@ include(xTestUtil)
 
 INIT_QGTEST()
 
+SET(CMAKE_AUTOMOC OFF)
+
 # configure a header file to pass some of the CMake settings
 # to the source code
 configure_file (

@@ -32,4 +32,4 @@ void TestQString::toUpper() {
 }
 
 QTEST_MAIN(TestQString)
-#include "testqstring.moc"
+#include "moc_testqstring.cpp"

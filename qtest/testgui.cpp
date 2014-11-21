@@ -24,4 +24,4 @@ void TestGui::testGui() {
 }
 
 QTEST_MAIN(TestGui)
-#include "testgui.moc"
+#include "moc_testgui.cpp"

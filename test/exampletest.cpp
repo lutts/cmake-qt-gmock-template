@@ -45,4 +45,4 @@ void ExampleTest::testMockExample() {
 }
 
 QTEST_GMOCK_MAIN(ExampleTest)
-#include "exampletest.moc"
+#include "moc_exampletest.cpp"

@@ -222,4 +222,4 @@ void tst_vector_vs_std::lookup_Large() {
 }
 
 QTEST_MAIN(tst_vector_vs_std)
-#include "containers.moc"
+#include "moc_containers.cpp"

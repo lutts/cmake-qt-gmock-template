@@ -42,4 +42,4 @@ void TestGui::testGui() {
 }
 
 QTEST_MAIN(TestGui)
-#include "testgui2.moc"
+#include "moc_testgui2.cpp"
