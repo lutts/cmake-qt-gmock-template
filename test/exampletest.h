@@ -8,7 +8,7 @@
 #ifndef TEST_EXAMPLETEST_H_
 #define TEST_EXAMPLETEST_H_
 
-#include <QtTest/QtTest>
+#include <QTest>
 
 class ExampleTest : public QObject {
   Q_OBJECT
