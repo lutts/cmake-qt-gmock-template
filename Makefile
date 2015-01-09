@@ -6,14 +6,20 @@ prepare:
 	-mkdir build
 	cd build && cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON ..
 
-cpplint:
+cpplint: FORCE
 	make -C build cpplint
 
 cpplint-%:
 	ENV_CPPLINT_ROOT=$* make -C build cpplint
 
+test: FORCE
+	cd build && make test
+
 test-%:
 	cd build && ctest -R $*
+
+list-test:
+	cd build && ctest -N
 
 Makefile:;
 
