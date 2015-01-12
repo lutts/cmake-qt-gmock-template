@@ -1,4 +1,6 @@
-all:
+all: build
+
+build: FORCE
 	make -C build
 	cp build/compile_commands.json ./
 
@@ -12,11 +14,11 @@ cpplint: FORCE
 cpplint-%:
 	ENV_CPPLINT_ROOT=$* make -C build cpplint
 
-test: FORCE
-	cd build && make test
+test: build
+	cd build && ctest --output-on-failure
 
-test-%:
-	cd build && ctest -R $*
+test-%: build
+	cd build && ctest --output-on-failure -R $*
 
 list-test:
 	cd build && ctest -N
