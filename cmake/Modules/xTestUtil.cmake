@@ -49,7 +49,7 @@ function(add_qg_test testname)
   endif(${USE_GMOCK})
   
   #add_test(test${testname} ${EXECUTABLE_OUTPUT_PATH}/test_${testname})
-  add_test(test_${testname} test_${testname})
+  add_test(${testname} test_${testname})
   
   if (${QGTEST_AUTORUN})
     add_custom_command(TARGET test_${testname}
