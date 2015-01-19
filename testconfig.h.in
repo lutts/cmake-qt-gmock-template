@@ -1,18 +1,54 @@
-
-// Verzeichnis
-#define SQLTESTFILE "@SQLTESTFILE@"
-#define DATABASE "@DATABASE@"
-#define DATABASEDRIVER "@DATABASEDRIVER@"
+#define INIT_RESOURCES do{ @qt_RCS@ } while(0)
 
 // The following line GTEST_FLAG causes Google Mock to throw an exception on failure,
 // which will be interpreted by your testing framework as a test failure.
+//
+// Qt stuffs are copyed from QTEST_MAIN definition
 
-#define QTEST_GMOCK_MAIN(TestObject) \
-int main(int argc, char *argv[]) \
-{ \
-    ::testing::GTEST_FLAG(throw_on_failure) = true; \
-    ::testing::InitGoogleMock(&argc, argv); \
-    QCoreApplication app(argc, argv); \
-    TestObject tc; \
-    return QTest::qExec(&tc, argc, argv); \
-}
+#if defined(QT_WIDGETS_LIB)
+
+#define QTEST_GMOCK_MAIN(TestObject)                    \
+  int main(int argc, char *argv[])                      \
+  {                                                     \
+    ::testing::GTEST_FLAG(throw_on_failure) = true;     \
+    ::testing::InitGoogleMock(&argc, argv);             \
+                                                        \
+    INIT_RESOURCES;                                     \
+    QApplication app(argc, argv);                       \
+    app.setAttribute(Qt::AA_Use96Dpi, true);            \
+    QTEST_DISABLE_KEYPAD_NAVIGATION                     \
+        TestObject tc;                                  \
+    return QTest::qExec(&tc, argc, argv);               \
+  }
+
+#elif defined(QT_GUI_LIB)
+
+#define QTEST_GMOCK_MAIN(TestObject)                    \
+  int main(int argc, char *argv[])                      \
+  {                                                     \
+    ::testing::GTEST_FLAG(throw_on_failure) = true;     \
+    ::testing::InitGoogleMock(&argc, argv);             \
+                                                        \
+    INIT_RESOURCES;                                     \
+    QGuiApplication app(argc, argv);                    \
+    app.setAttribute(Qt::AA_Use96Dpi, true);            \
+    TestObject tc;                                      \
+    return QTest::qExec(&tc, argc, argv);               \
+  }
+
+#else
+
+#define QTEST_GMOCK_MAIN(TestObject)                    \
+  int main(int argc, char *argv[])                      \
+  {                                                     \
+    ::testing::GTEST_FLAG(throw_on_failure) = true;     \
+    ::testing::InitGoogleMock(&argc, argv);             \
+                                                        \
+    INIT_RESOURCES;                                     \
+    QCoreApplication app(argc, argv);                   \
+    app.setAttribute(Qt::AA_Use96Dpi, true);            \
+    TestObject tc;                                      \
+    return QTest::qExec(&tc, argc, argv);               \
+  }
+
+#endif
