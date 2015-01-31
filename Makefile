@@ -14,13 +14,13 @@ cpplint: FORCE
 cpplint-%:
 	ENV_CPPLINT_ROOT=$* make -C build cpplint
 
-test: build
+test: build FORCE
 	cd build && ctest --output-on-failure
 
 test-%: build
 	cd build && ctest --output-on-failure -R $*
 
-list-test:
+list-test: FORCE
 	cd build && ctest -N
 
 Makefile:;
